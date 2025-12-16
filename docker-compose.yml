@@ -1,16 +1,19 @@
 version: '3.8'
 
 services:
-  mysql:
-    image: mysql:8.0
+  db:
+    image: mysql:latest
     environment:
-      MYSQL_ROOT_PASSWORD: rootpassword
-      MYSQL_DATABASE: tournament_organiser
-      MYSQL_USER: user
-      MYSQL_PASSWORD: password
-    ports:
-      - "3306:3306"
+      MYSQL_ALLOW_EMPTY_PASSWORD: yes
+      MYSQL_DATABASE: sports_tournament_organizer
     volumes:
       - mysql_data:/var/lib/mysql
+  app:
+    build: .
+    depends_on:
+      db:
+        condition: service_started
+    ports:
+      - "8080:8080"
 volumes:
   mysql_data:
