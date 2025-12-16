@@ -28,6 +28,7 @@
 	</scm>
 	<properties>
 		<java.version>23</java.version>
+		<sonar.organization>radostin-handarov</sonar.organization>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -122,6 +123,12 @@
 						<googleJavaFormat />
 					</java>
 				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.sonarsource.scanner.maven</groupId>
+				<artifactId>sonar-maven-plugin</artifactId>
+				<version>5.5.0.6356</version>
 			</plugin>
 		</plugins>
 	</build>

@@ -2,9 +2,9 @@ name: CI
 
 on:
   push:
-    branches: [ "feature/lint-and-sast" ]
+    branches: [ "main", "dev" ]
   pull_request:
-    branches: [ "feature/lint-and-sast" ]
+    branches: [ "main" ]
 
   workflow_dispatch:
 
@@ -20,7 +20,24 @@ jobs:
         uses: actions/setup-java@v5
         with:
           distribution: 'temurin'
-          java-version: '21'
+          java-version: '23'
           cache: maven
       - name: Run Spotless style ckecks
         run: mvn spotless:check
+  sonar-cloud-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Setup Java 23 with Maven
+        uses: actions/setup-java@v5
+        with:
+          distribution: 'temurin'
+          java-version: '23'
+          cache: maven
+      - name: Build and analyze
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=RHandarov_dev-ops-project-fmi
