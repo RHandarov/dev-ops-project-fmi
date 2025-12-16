@@ -5,5 +5,5 @@ import org.springframework.stereotype.Service;
 
 @Service
 public interface NotificationMessagePool {
-    NotificationMessage getNotificationMessage(String message);
+  NotificationMessage getNotificationMessage(String message);
 }

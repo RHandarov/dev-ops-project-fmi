@@ -7,9 +7,9 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class MatchResultsDTO {
-    @Positive(message = "Team 1 points must be a positive number")
-    private Integer team1Points;
+  @Positive(message = "Team 1 points must be a positive number")
+  private Integer team1Points;
 
-    @Positive(message = "Team 2 points must be a positive number")
-    private Integer team2Points;
+  @Positive(message = "Team 2 points must be a positive number")
+  private Integer team2Points;
 }

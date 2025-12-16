@@ -11,9 +11,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class NewNotificationDTO {
-    @NotNull(message = "Receiver id is required")
-    private Long receiverId;
+  @NotNull(message = "Receiver id is required")
+  private Long receiverId;
 
-    @NotNull(message = "Notification message is required")
-    private String message;
+  @NotNull(message = "Notification message is required")
+  private String message;
 }

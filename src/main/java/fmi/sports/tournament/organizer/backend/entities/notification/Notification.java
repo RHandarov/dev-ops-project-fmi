@@ -2,10 +2,9 @@ package fmi.sports.tournament.organizer.backend.entities.notification;
 
 import fmi.sports.tournament.organizer.backend.entities.user.User;
 import jakarta.persistence.*;
+import java.time.LocalDateTime;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.time.LocalDateTime;
 
 @Entity
 @Data
@@ -13,28 +12,25 @@ import java.time.LocalDateTime;
 @Table(name = "notifications")
 @IdClass(NotificationId.class)
 public class Notification {
-    @Id
-    private Long userId;
+  @Id private Long userId;
 
-    @Id
-    private Long messageId;
+  @Id private Long messageId;
 
-    @MapsId("userId")
-    @ManyToOne
-    private User user;
+  @MapsId("userId")
+  @ManyToOne
+  private User user;
 
-    @MapsId("messageId")
-    @ManyToOne
-    private NotificationMessage message;
+  @MapsId("messageId")
+  @ManyToOne
+  private NotificationMessage message;
 
-    @Id
-    private LocalDateTime creationTime;
-    private boolean isRead;
+  @Id private LocalDateTime creationTime;
+  private boolean isRead;
 
-    public Notification(User user, NotificationMessage message) {
-        this.user = user;
-        this.message = message;
-        this.creationTime = LocalDateTime.now();
-        this.isRead = false;
-    }
+  public Notification(User user, NotificationMessage message) {
+    this.user = user;
+    this.message = message;
+    this.creationTime = LocalDateTime.now();
+    this.isRead = false;
+  }
 }

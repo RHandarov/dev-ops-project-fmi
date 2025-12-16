@@ -8,6 +8,6 @@ import org.springframework.context.annotation.Configuration;
 @ConfigurationProperties(prefix = "jwt")
 @Data
 public class JWTConfig {
-    private String signingSecret;
-    private long expiration;
+  private String signingSecret;
+  private long expiration;
 }

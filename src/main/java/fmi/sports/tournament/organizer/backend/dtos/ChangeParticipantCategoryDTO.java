@@ -7,10 +7,10 @@ import lombok.Data;
 
 @Data
 public class ChangeParticipantCategoryDTO {
-    @NotNull(message = "User id is required")
-    private Long userId;
+  @NotNull(message = "User id is required")
+  private Long userId;
 
-    @NotNull(message = "Category is required")
-    @JsonProperty(value = "category")
-    private ParticipantCategory participantCategory;
+  @NotNull(message = "Category is required")
+  @JsonProperty(value = "category")
+  private ParticipantCategory participantCategory;
 }

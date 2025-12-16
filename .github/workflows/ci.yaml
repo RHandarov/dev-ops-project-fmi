@@ -1,0 +1,26 @@
+name: CI
+
+on:
+  push:
+    branches: [ "feature/lint-and-sast" ]
+  pull_request:
+    branches: [ "feature/lint-and-sast" ]
+
+  workflow_dispatch:
+
+jobs:
+  code-formatting-checks:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Setup Java 23 with Maven
+        uses: actions/setup-java@v5
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+          cache: maven
+      - name: Run Spotless style ckecks
+        run: mvn spotless:check

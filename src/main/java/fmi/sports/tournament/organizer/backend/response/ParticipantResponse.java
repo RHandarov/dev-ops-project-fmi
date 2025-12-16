@@ -8,17 +8,16 @@ import lombok.Data;
 @Data
 @Builder
 public class ParticipantResponse {
-    public static ParticipantResponseBuilder fromDTO(ParticipantDTO participantDTO) {
-        return ParticipantResponse
-                .builder()
-                .userId(participantDTO.getUserId())
-                .teamId(participantDTO.getTeamId())
-                .category(participantDTO.getCategory());
-    }
+  public static ParticipantResponseBuilder fromDTO(ParticipantDTO participantDTO) {
+    return ParticipantResponse.builder()
+        .userId(participantDTO.getUserId())
+        .teamId(participantDTO.getTeamId())
+        .category(participantDTO.getCategory());
+  }
 
-    private Long userId;
-    private Long teamId;
-    private ParticipantCategory category;
-    private ResponseResult responseResult;
-    private String message;
+  private Long userId;
+  private Long teamId;
+  private ParticipantCategory category;
+  private ResponseResult responseResult;
+  private String message;
 }

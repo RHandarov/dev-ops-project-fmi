@@ -3,12 +3,11 @@ package fmi.sports.tournament.organizer.backend.entities.team;
 import fmi.sports.tournament.organizer.backend.entities.tournament.Tournament;
 import fmi.sports.tournament.organizer.backend.entities.user.User;
 import jakarta.persistence.*;
+import java.util.Set;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.Set;
 
 @Entity
 @Table(name = "teams")
@@ -17,33 +16,32 @@ import java.util.Set;
 @NoArgsConstructor
 @Data
 public class Team {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String name;
-    private String email;
-    private Double budget;
-    private Integer size;
-    private String secretCode;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
 
-    @OneToMany(mappedBy = "team", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<Participant> participants;
+  private String name;
+  private String email;
+  private Double budget;
+  private Integer size;
+  private String secretCode;
 
-    @ManyToMany(mappedBy = "followedTeams")
-    private Set<User> followers;
+  @OneToMany(mappedBy = "team", cascade = CascadeType.ALL, orphanRemoval = true)
+  private Set<Participant> participants;
 
-    @ManyToMany(mappedBy = "teams", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    private Set<Tournament> tournaments;
+  @ManyToMany(mappedBy = "followedTeams")
+  private Set<User> followers;
 
-    public Team(String name,
-                String email,
-                Double budget,
-                Integer size,
-                String secretCode) {
-        this.name = name;
-        this.email = email;
-        this.budget = budget;
-        this.size = size;
-        this.secretCode = secretCode;
-    }
+  @ManyToMany(
+      mappedBy = "teams",
+      cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+  private Set<Tournament> tournaments;
+
+  public Team(String name, String email, Double budget, Integer size, String secretCode) {
+    this.name = name;
+    this.email = email;
+    this.budget = budget;
+    this.size = size;
+    this.secretCode = secretCode;
+  }
 }

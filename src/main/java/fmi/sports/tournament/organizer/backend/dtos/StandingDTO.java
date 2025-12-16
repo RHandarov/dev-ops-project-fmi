@@ -11,14 +11,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class StandingDTO {
-    public static StandingDTO fromEntity(Standing standing) {
-        return StandingDTO
-                .builder()
-                .teamId(standing.getTeamId())
-                .points(standing.getPoints())
-                .build();
-    }
+  public static StandingDTO fromEntity(Standing standing) {
+    return StandingDTO.builder().teamId(standing.getTeamId()).points(standing.getPoints()).build();
+  }
 
-    private Long teamId;
-    private Integer points;
+  private Long teamId;
+  private Integer points;
 }

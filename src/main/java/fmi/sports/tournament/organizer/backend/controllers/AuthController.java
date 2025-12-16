@@ -19,28 +19,28 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
-    private final UserService userService;
+  private final UserService userService;
 
-    @Autowired
-    public AuthController(UserService userService) {
-        this.userService = userService;
-    }
+  @Autowired
+  public AuthController(UserService userService) {
+    this.userService = userService;
+  }
 
-    @PostMapping("/register")
-    public ResponseEntity<UserResponse> registerNewUser(@Valid @RequestBody NewUserDTO newUserDTO) {
-        UserDTO newUser = userService.registerUser(newUserDTO);
-        return ResponseEntity.status(HttpStatus.CREATED)
-                .body(UserResponse.fromDTO(newUser)
-                        .responseResult(ResponseResult.SUCCESSFULLY_REGISTERED)
-                        .build());
-    }
+  @PostMapping("/register")
+  public ResponseEntity<UserResponse> registerNewUser(@Valid @RequestBody NewUserDTO newUserDTO) {
+    UserDTO newUser = userService.registerUser(newUserDTO);
+    return ResponseEntity.status(HttpStatus.CREATED)
+        .body(
+            UserResponse.fromDTO(newUser)
+                .responseResult(ResponseResult.SUCCESSFULLY_REGISTERED)
+                .build());
+  }
 
-    @PostMapping("/login")
-    public ResponseEntity<LoginResponse> login(@Valid @RequestBody CredentialsDTO credentialsDTO) {
-        return ResponseEntity.ok(
-                LoginResponse.fromDTO(userService.login(credentialsDTO))
-                        .responseResult(ResponseResult.SUCCESSFULLY_SIGNED_IN)
-                        .build()
-        );
-    }
+  @PostMapping("/login")
+  public ResponseEntity<LoginResponse> login(@Valid @RequestBody CredentialsDTO credentialsDTO) {
+    return ResponseEntity.ok(
+        LoginResponse.fromDTO(userService.login(credentialsDTO))
+            .responseResult(ResponseResult.SUCCESSFULLY_SIGNED_IN)
+            .build());
+  }
 }

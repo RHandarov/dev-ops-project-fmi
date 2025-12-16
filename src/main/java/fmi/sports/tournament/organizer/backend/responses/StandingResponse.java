@@ -11,15 +11,14 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 public class StandingResponse {
-    public static StandingResponseBuilder fromDTO(StandingDTO standingDTO) {
-        return StandingResponse
-                .builder()
-                .teamId(standingDTO.getTeamId())
-                .points(standingDTO.getPoints());
-    }
+  public static StandingResponseBuilder fromDTO(StandingDTO standingDTO) {
+    return StandingResponse.builder()
+        .teamId(standingDTO.getTeamId())
+        .points(standingDTO.getPoints());
+  }
 
-    private Long teamId;
-    private Integer points;
-    private ResponseResult responseResult;
-    private String message;
+  private Long teamId;
+  private Integer points;
+  private ResponseResult responseResult;
+  private String message;
 }

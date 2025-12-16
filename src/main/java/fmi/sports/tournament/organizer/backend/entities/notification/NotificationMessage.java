@@ -9,14 +9,14 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Table(name = "messages")
 public class NotificationMessage {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
 
-    @Column(columnDefinition = "text")
-    private String messageContent;
+  @Column(columnDefinition = "text")
+  private String messageContent;
 
-    public NotificationMessage(String messageContent) {
-        this.messageContent = messageContent;
-    }
+  public NotificationMessage(String messageContent) {
+    this.messageContent = messageContent;
+  }
 }

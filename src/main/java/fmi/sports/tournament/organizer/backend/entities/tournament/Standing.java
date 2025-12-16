@@ -15,20 +15,19 @@ import lombok.NoArgsConstructor;
 @Table(name = "standings")
 @IdClass(StandingId.class)
 public class Standing {
-    @Id
-    private Long tournamentId;
+  @Id private Long tournamentId;
 
-    @Id
-    private Long teamId;
+  @Id private Long teamId;
 
-    @ManyToOne
-    @MapsId("tournamentId")
-    @JoinColumn(name = "tournament_id")
-    private Tournament tournament;
+  @ManyToOne
+  @MapsId("tournamentId")
+  @JoinColumn(name = "tournament_id")
+  private Tournament tournament;
 
-    @ManyToOne
-    @MapsId("teamId")
-    @JoinColumn(name = "team_id")
-    private Team team;
-    private Integer points;
+  @ManyToOne
+  @MapsId("teamId")
+  @JoinColumn(name = "team_id")
+  private Team team;
+
+  private Integer points;
 }

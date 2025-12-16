@@ -15,39 +15,38 @@ import lombok.NoArgsConstructor;
 @Builder
 @Table(name = "matches")
 public class Match {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "tournament_id", referencedColumnName = "id")
-    private Tournament tournament;
+  @ManyToOne
+  @JoinColumn(name = "tournament_id", referencedColumnName = "id")
+  private Tournament tournament;
 
-    @ManyToOne
-    @JoinColumn(name = "team_1")
-    private Team team1;
-    private Integer team1Points;
+  @ManyToOne
+  @JoinColumn(name = "team_1")
+  private Team team1;
 
-    @ManyToOne
-    @JoinColumn(name = "team_2")
-    private Team team2;
-    private Integer team2Points;
+  private Integer team1Points;
 
-    private String venue;
+  @ManyToOne
+  @JoinColumn(name = "team_2")
+  private Team team2;
 
-    @Enumerated(EnumType.STRING)
-    private MatchStatus status;
+  private Integer team2Points;
 
-    public Match(Tournament tournament,
-                 Team team1,
-                 Team team2,
-                 String venue) {
-        this.tournament = tournament;
-        this.team1 = team1;
-        this.team1Points = 0;
-        this.team2 = team2;
-        this.team2Points = 0;
-        this.venue = venue;
-        this.status = MatchStatus.ONGOING;
-    }
+  private String venue;
+
+  @Enumerated(EnumType.STRING)
+  private MatchStatus status;
+
+  public Match(Tournament tournament, Team team1, Team team2, String venue) {
+    this.tournament = tournament;
+    this.team1 = team1;
+    this.team1Points = 0;
+    this.team2 = team2;
+    this.team2Points = 0;
+    this.venue = venue;
+    this.status = MatchStatus.ONGOING;
+  }
 }

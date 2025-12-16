@@ -8,13 +8,12 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class ParticipantDTO {
-    public static ParticipantDTO fromEntity(Participant participant) {
-        return new ParticipantDTO(participant.getUser().getId(),
-                participant.getTeam().getId(),
-                participant.getCategory());
-    }
+  public static ParticipantDTO fromEntity(Participant participant) {
+    return new ParticipantDTO(
+        participant.getUser().getId(), participant.getTeam().getId(), participant.getCategory());
+  }
 
-    private Long userId;
-    private Long teamId;
-    private ParticipantCategory category;
+  private Long userId;
+  private Long teamId;
+  private ParticipantCategory category;
 }

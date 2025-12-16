@@ -9,10 +9,11 @@ import org.springframework.stereotype.Service;
 
 @Service
 public interface UserService {
-    UserDTO registerUser(NewUserDTO newUser);
-    LoginDTO login(CredentialsDTO userCredentials);
+  UserDTO registerUser(NewUserDTO newUser);
 
-    void updateUserInfo(Long id, @Valid NewUserDTO newUserInfo);
+  LoginDTO login(CredentialsDTO userCredentials);
 
-    void deleteUser(Long id);
+  void updateUserInfo(Long id, @Valid NewUserDTO newUserInfo);
+
+  void deleteUser(Long id);
 }

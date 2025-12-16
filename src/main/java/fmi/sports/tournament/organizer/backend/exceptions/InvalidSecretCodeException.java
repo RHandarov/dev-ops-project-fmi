@@ -1,10 +1,11 @@
 package fmi.sports.tournament.organizer.backend.exceptions;
 
 public class InvalidSecretCodeException extends RuntimeException {
-    public InvalidSecretCodeException(String message) {
-        super(message);
-    }
-    public InvalidSecretCodeException(String message, Throwable cause) {
-        super(message, cause);
-    }
+  public InvalidSecretCodeException(String message) {
+    super(message);
+  }
+
+  public InvalidSecretCodeException(String message, Throwable cause) {
+    super(message, cause);
+  }
 }
