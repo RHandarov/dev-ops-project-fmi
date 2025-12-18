@@ -63,3 +63,20 @@ jobs:
           name: code
           path: .
           include-hidden-files: true
+  unit-tests:
+    needs: [build]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: code
+          path: .
+      - name: Setup Java 23 with Maven
+        uses: actions/setup-java@v5
+        with:
+          distribution: 'temurin'
+          java-version: '23'
+          cache: maven
+      - name: Run unit tests
+        run: mvn test
