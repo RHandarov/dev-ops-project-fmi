@@ -2,7 +2,9 @@ name: CI
 
 on:
   push:
-    branches: [ "dev" ]
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
 
   workflow_dispatch:
 
@@ -78,3 +80,9 @@ jobs:
           cache: maven
       - name: Run unit tests
         run: mvn test
+  docker-image:
+    needs: [unit-tests]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build image
+        run: exit 0
