@@ -37,4 +37,6 @@ build/
 deployment/.terraform
 deployment/.terraform.lock.hcl
 deployment/terraform.tfstate
+deployment/terraform.tfstate.lock
+deployment/terraform.tfstate.lock.*
 deployment/terraform.tfstate.backup
