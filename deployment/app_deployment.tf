@@ -34,13 +34,18 @@ resource "kubernetes_deployment_v1" "app_deployment" {
               name = "db-config-map"
             }
           }
-          env {
-            name = "DB_USERNAME"
-            value = "root"
-          }
-          env {
-            name = "DB_PASSWORD"
-            value = "secret"
+          # env {
+          #   name = "DB_USERNAME"
+          #   value = "root"
+          # }
+          # env {
+          #   name = "DB_PASSWORD"
+          #   value = "secret"
+          # }
+          env_from {
+            secret_ref {
+              name = "db-secrets"
+            }
           }
           port {
             container_port = 8080
