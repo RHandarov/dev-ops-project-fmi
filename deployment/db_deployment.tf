@@ -23,8 +23,15 @@ resource "kubernetes_deployment_v1" "db_deployment" {
       spec {
         container {
           name = "db"
-          image = "mysql:9.5.9"
-          
+          image = "mysql:9.5.0"
+          env {
+            name = "MYSQL_ROOT_PASSWORD"
+            value = "secret"
+          }
+          env {
+            name = "MYSQL_DATABASE"
+            value = "sports_tournament_organizer"
+          }
           port {
             container_port = 3306
           }
