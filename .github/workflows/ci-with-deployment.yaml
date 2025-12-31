@@ -69,10 +69,6 @@ jobs:
     permissions:
       packages: write
     steps:
-      - name: Convert actor to lowercase letters
-        env:
-          ORIGINAL_ACTOR: ${{ github.actor }}
-        run: echo "ACTOR=${ORIGINAL_ACTOR,,}" >> ${GITHUB_ENV}
       - name: Download artifact
         uses: actions/download-artifact@v4
         with:
@@ -101,6 +97,10 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Convert actor to lowercase letters
+        env:
+          ORIGINAL_ACTOR: ${{ github.actor }}
+        run: echo "ACTOR=${ORIGINAL_ACTOR,,}" >> ${GITHUB_ENV}
       - name: Build image
         run: |
           docker build -t "ghcr.io/${{ env.ACTOR }}/myapp:latest" \
