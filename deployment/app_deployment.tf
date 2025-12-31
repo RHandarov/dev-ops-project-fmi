@@ -4,7 +4,7 @@ resource "kubernetes_deployment_v1" "app_deployment" {
     namespace = kubernetes_namespace_v1.myapp.metadata[0].name
   }
   spec {
-    replicas = 1
+    replicas = 3
     selector {
       match_labels = {
         app = "myapp"
