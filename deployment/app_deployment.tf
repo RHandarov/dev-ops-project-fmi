@@ -23,8 +23,8 @@ resource "kubernetes_deployment_v1" "app_deployment" {
       spec {
         container {
           name = "myapp"
-          image = "myapp:0.0.1"
-          image_pull_policy = "Never"
+          image = "ghcr.io/rhandarov/myapp:latest"
+          # image_pull_policy = "Never"
           # env {
           #   name = "DB_URL"
           #   value = "jdbc:mysql://db-service.myapp-namespace.svc.cluster.local:3306/sports_tournament_organizer?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true&useLegacyDatetimeCode=false"
